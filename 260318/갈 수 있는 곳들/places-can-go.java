@@ -19,13 +19,15 @@ public class Main {
 
         Queue<Integer> q = new ArrayDeque<>();
 
+        int count = 0;
         for(int[] p : starts){
             int y = p[0] - 1;
             int x = p[1] - 1;
             q.offer(y * n +x);
+            grid[y][x] = 1;
+            count++;
         }
 
-        int count = 0;
         while(!q.isEmpty()){
             int cur = q.poll();
             int y = cur / n;
@@ -35,7 +37,7 @@ public class Main {
                 int ny = y + dy[i];
                 int nx = x + dx[i];
 
-                if(0 <= ny && ny < n && 0 <= nx && nx < n &&  grid[ny][nx] == 0){
+                if(0 <= ny && ny < n && 0 <= nx && nx < n && grid[ny][nx] == 0){
                     q.offer(ny * n + nx);
                     grid[ny][nx] = 1;
                     count++;
