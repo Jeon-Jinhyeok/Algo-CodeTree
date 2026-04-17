@@ -18,7 +18,7 @@ public class Main {
             dp[i] = (dp[i-1] * 2 + dp[i-2] * 4) % MOD;
         }
 
-        System.out.println(dp[n]);
+        System.out.println(dp[n] % MOD);
         sc.close();
     }
 }
