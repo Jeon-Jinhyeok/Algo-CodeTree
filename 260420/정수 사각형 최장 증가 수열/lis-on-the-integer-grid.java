@@ -25,15 +25,17 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+
         int[][] grid = new int[n][n];
 
         Cell[] cells = new Cell[n*n];
         for (int i = 0; i < n; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
             for (int j = 0; j < n; j++) {
-                grid[i][j] = sc.nextInt();
+                grid[i][j] = Integer.parseInt(st.nextToken());
                 cells[i*n+j] = new Cell(i, j, grid[i][j]);
             }
         }
