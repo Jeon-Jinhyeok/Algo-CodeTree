@@ -13,14 +13,22 @@ public class Main {
         }
 
         int[] dp = new int[n+1];
+        Arrays.fill(dp, Integer.MIN_VALUE);
+        dp[1] = 0;
+
         for(int i = 2; i < n+1; i++){
             for(int j = 1; j < i; j++){
-                if(arr[j] + j >= i){
-                    dp[i] = Math.max(dp[i], dp[j]+1);
+                if(arr[j] + j >= i && dp[j] != Integer.MIN_VALUE){
+                    dp[i] = Math.max(dp[i], dp[j] + 1);
                 }
             }
         }
 
-        System.out.println(dp[n]);
+        int maxValue = -1;
+        for(int each : dp){
+            maxValue = Math.max(maxValue, each);
+        }
+
+        System.out.println(maxValue);
     }
 }
